@@ -51,7 +51,7 @@ export default function Home() {
     // Simulación: después de 2 segundos marcamos como conectado (para demo)
     setTimeout(() => {
       setTwitterConnected(true);
-      alert("✅ Cuenta de X vinculada correctamente (simulado)");
+      alert("linked correctly");
     }, 1500);
   };
 
