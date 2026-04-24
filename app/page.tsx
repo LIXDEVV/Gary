@@ -176,7 +176,7 @@ export default function Home() {
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center gap-2">
               <span className="text-3xl font-bold bg-gradient-to-r from-amber-300 via-orange-400 to-orange-500 bg-clip-text text-transparent">GARAY</span>
-              <span className="text-xs text-muted-foreground">AI COMPANION</span>
+              <span className="text-xs text-muted-foreground">COMMUNITY COMPANION</span>
             </div>
 
             <div className="flex items-center gap-3">

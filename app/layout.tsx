@@ -6,7 +6,7 @@ import './globals.css'
 const courierPrime = Courier_Prime({ weight: '400', subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Local 8's Radio",
+  title: "Garay Community",
   description: 'Broadcasting live from the Nightosphere',
   generator: 'v0.app',
   icons: {
