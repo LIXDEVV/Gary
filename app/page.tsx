@@ -176,7 +176,7 @@ export default function Home() {
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center gap-2">
               <span className="text-3xl font-bold bg-gradient-to-r from-amber-300 via-orange-400 to-orange-500 bg-clip-text text-transparent">GARAY</span>
-              <span className="text-xs text-muted-foreground">AI COMPANIONS</span>
+              <span className="text-xs text-muted-foreground">AI COMPANION</span>
             </div>
 
             <div className="flex items-center gap-3">
@@ -222,7 +222,7 @@ export default function Home() {
             </div>
 
             <p className="text-amber-100 text-xl leading-relaxed max-w-lg">
-              Home for crypto natives. Communities powered by Garay AI — share alpha, build your tribe, own your voice.
+              The root of SOLANA is its community. Garay is committed to this: share your alpha, create your tribe, make your voice heard, Garay will join your community and make it great.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
