@@ -65,23 +65,22 @@ export default function Home() {
     ? `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}` 
     : '';
 
-  // Contador de posts (simulado por ahora)
+  // Contador de posts
   useEffect(() => {
     const fetchPostCount = async () => {
       try {
         const res = await fetch(`/api/tweet-count?query=${encodeURIComponent(`#${hashtag}`)}`);
         const data = await res.json();
         if (data.count) setPostCount(data.count);
-      } catch (error) {
-        console.log("Usando conteo simulado");
-      }
+      } catch (error) {}
     };
 
     fetchPostCount();
-    const interval = setInterval(fetchPostCount, 300000); // cada 5 minutos
+    const interval = setInterval(fetchPostCount, 300000);
     return () => clearInterval(interval);
   }, []);
 
+  // Comunidades (sin NFT Collectors y Metaverse)
   const communities: Community[] = [
     {
       name: 'Trading Signals',
@@ -110,20 +109,6 @@ export default function Home() {
       icon: '💰',
       members: 2156,
       link: 'https://www.youtube.com/'
-    },
-    {
-      name: 'NFT Collectors',
-      description: 'Discover and discuss digital art and NFTs',
-      icon: '🎨',
-      members: 1834,
-      link: 'https://www.youtube.com/'
-    },
-    {
-      name: 'Metaverse',
-      description: 'Explore virtual worlds and metaverse projects',
-      icon: '🌐',
-      members: 956,
-      link: 'https://www.youtube.com/'
     }
   ];
 
@@ -135,7 +120,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black text-foreground overflow-hidden relative">
       
-      {/* === FONDO MÁS OSCURO (como pediste) === */}
+      {/* Fondo más oscuro */}
       <div className="fixed inset-0 pointer-events-none">
         <Image
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fondo-tmsJd7kfCoNcXIbcuyGY6xgJjqInrI.png"
@@ -146,10 +131,8 @@ export default function Home() {
         />
       </div>
 
-      {/* Overlay negro fuerte */}
       <div className="fixed inset-0 bg-black/75 z-[-1]" />
 
-      {/* Glow effects */}
       <div className="fixed inset-0 opacity-30 pointer-events-none z-[-1]">
         <div className="absolute top-20 right-10 w-96 h-96 bg-orange-500 rounded-full blur-3xl opacity-20"></div>
         <div className="absolute bottom-20 left-10 w-80 h-80 bg-amber-400 rounded-full blur-3xl opacity-20"></div>
@@ -169,7 +152,7 @@ export default function Home() {
                 Share GARAY on X
               </a>
 
-              {/* Phantom Wallet Button */}
+              {/* Phantom Wallet */}
               {walletAddress ? (
                 <button
                   onClick={disconnectWallet}
@@ -306,7 +289,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {communities.map((community, idx) => (
               <a 
                 key={idx}
@@ -353,7 +336,6 @@ export default function Home() {
               <button 
                 onClick={copyToClipboard}
                 className="p-2 hover:bg-orange-900 rounded transition flex-shrink-0"
-                title="Copy contract address"
               >
                 {copied ? <Check size={18} className="text-orange-400" /> : <Copy size={18} />}
               </button>
