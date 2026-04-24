@@ -104,7 +104,7 @@ export default function Home() {
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText('6oqrBATpFy8ispnR7b2Fc2gUniJ6dj31Z3MXcVHepump');
+    navigator.clipboard.writeText('...pump');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -310,10 +310,10 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-4"><span className="gradient-text">$GARAY TOKENOMICS</span></h2>
           <div className="mt-8 bg-orange-950/30 border border-border rounded-lg p-8 max-w-2xl">
             <h3 className="text-2xl font-bold text-accent mb-4">Fair launch on Pump.fun</h3>
-            <p className="text-amber-100 mb-6">95% fair launch, 5% dev buy and lock.</p>
+            <p className="text-amber-100 mb-6">98% fair launch, 2% dev buy and lock.</p>
             <div className="flex items-center gap-3 bg-black/50 p-4 rounded-lg">
               <code className="text-xs sm:text-sm font-mono text-muted-foreground break-all flex-1">
-                6oqrBATpFy8ispnR7b2Fc2gUniJ6dj31Z3MXcVHepump
+                ...pump
               </code>
               <button onClick={copyToClipboard} className="p-2 hover:bg-orange-900 rounded transition">
                 {copied ? <Check size={18} className="text-orange-400" /> : <Copy size={18} />}
