@@ -1,7 +1,7 @@
 'use client';
 
 import { Copy, Check, Wallet, LogIn } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
@@ -19,6 +19,9 @@ export default function Home() {
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
   const [isConnecting, setIsConnecting] = useState(false);
   const [twitterConnected, setTwitterConnected] = useState(false);
+  const [postCount, setPostCount] = useState(342);
+
+  const hashtag = "GARAY";
 
   // ====================== WALLET ======================
   const connectWallet = async () => {
@@ -43,10 +46,7 @@ export default function Home() {
   // ====================== SIGN IN X ======================
   const signInWithTwitter = () => {
     const redirectUrl = encodeURIComponent(window.location.href);
-    window.open(
-      `https://twitter.com/i/flow/login?redirect_after_login=${redirectUrl}`,
-      "_blank"
-    );
+    window.open(`https://twitter.com/i/flow/login?redirect_after_login=${redirectUrl}`, "_blank");
 
     setTimeout(() => {
       setTwitterConnected(true);
@@ -64,6 +64,23 @@ export default function Home() {
   const shortAddress = walletAddress 
     ? `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}` 
     : '';
+
+  // Contador de posts (simulado por ahora)
+  useEffect(() => {
+    const fetchPostCount = async () => {
+      try {
+        const res = await fetch(`/api/tweet-count?query=${encodeURIComponent(`#${hashtag}`)}`);
+        const data = await res.json();
+        if (data.count) setPostCount(data.count);
+      } catch (error) {
+        console.log("Usando conteo simulado");
+      }
+    };
+
+    fetchPostCount();
+    const interval = setInterval(fetchPostCount, 300000); // cada 5 minutos
+    return () => clearInterval(interval);
+  }, []);
 
   const communities: Community[] = [
     {
@@ -110,38 +127,36 @@ export default function Home() {
     }
   ];
 
-  // Animaciones suaves al hacer scroll
   const sectionVariants = {
     hidden: { opacity: 0, y: 80 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-[#e8f5f1] to-background text-foreground overflow-hidden relative">
+    <div className="min-h-screen bg-black text-foreground overflow-hidden relative">
       
-      {/* Imagen de fondo */}
+      {/* === FONDO MÁS OSCURO (como pediste) === */}
       <div className="fixed inset-0 pointer-events-none">
         <Image
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fondo-tmsJd7kfCoNcXIbcuyGY6xgJjqInrI.png"
           alt="Background"
           fill
-          className="object-cover opacity-40"
+          className="object-cover opacity-20"
           priority
         />
       </div>
 
+      {/* Overlay negro fuerte */}
+      <div className="fixed inset-0 bg-black/75 z-[-1]" />
+
       {/* Glow effects */}
-      <div className="fixed inset-0 opacity-30 pointer-events-none">
-        <div className="absolute top-20 right-10 w-96 h-96 bg-orange-500 rounded-full blur-3xl opacity-15"></div>
+      <div className="fixed inset-0 opacity-30 pointer-events-none z-[-1]">
+        <div className="absolute top-20 right-10 w-96 h-96 bg-orange-500 rounded-full blur-3xl opacity-20"></div>
         <div className="absolute bottom-20 left-10 w-80 h-80 bg-amber-400 rounded-full blur-3xl opacity-20"></div>
       </div>
 
       {/* Navigation */}
-      <nav className="relative z-50 border-b border-border bg-black/70 backdrop-blur-sm">
+      <nav className="relative z-50 border-b border-border bg-black/80 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center gap-2">
@@ -188,7 +203,7 @@ export default function Home() {
       </nav>
 
       {/* HERO */}
-      <motion.section 
+      <motion.section
         initial="hidden"
         animate="visible"
         variants={sectionVariants}
@@ -228,39 +243,40 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* Stats */}
-      <motion.section 
+      {/* STATS */}
+      <motion.section
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={sectionVariants}
-        className="relative z-10 border-b border-border py-16 bg-black/30"
+        className="relative z-10 border-b border-border py-16 bg-black/40"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-3 gap-8 text-center">
             <div className="space-y-2">
-              <p className="text-4xl md:text-5xl font-bold text-accent">0</p>
+              <p className="text-4xl md:text-5xl font-bold text-accent">{communities.length}</p>
               <p className="text-muted-foreground">Communities</p>
             </div>
             <div className="space-y-2">
-              <p className="text-4xl md:text-5xl font-bold text-accent">0</p>
+              <p className="text-4xl md:text-5xl font-bold text-accent">12.4K</p>
               <p className="text-muted-foreground">Members</p>
             </div>
             <div className="space-y-2">
-              <p className="text-4xl md:text-5xl font-bold text-accent">0</p>
-              <p className="text-muted-foreground">Posts</p>
+              <p className="text-4xl md:text-5xl font-bold text-accent">{postCount.toLocaleString()}</p>
+              <p className="text-muted-foreground">Posts / Mentions</p>
+              <p className="text-xs text-orange-400">#{hashtag} • Últimos 7 días</p>
             </div>
           </div>
         </div>
       </motion.section>
 
-      {/* Communities */}
-      <motion.section 
+      {/* COMMUNITIES */}
+      <motion.section
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={sectionVariants}
-        className="relative z-10 border-b border-border py-20 bg-black/20"
+        className="relative z-10 border-b border-border py-20 bg-black/30"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
@@ -272,7 +288,9 @@ export default function Home() {
                   key={category}
                   onClick={() => setActiveCategory(category)}
                   className={`px-4 py-2 rounded-lg font-semibold transition text-sm ${
-                    activeCategory === category ? 'bg-accent text-accent-foreground' : 'bg-orange-950/30 text-amber-100 hover:bg-orange-900/40'
+                    activeCategory === category
+                      ? 'bg-accent text-accent-foreground'
+                      : 'bg-orange-950/30 text-amber-100 hover:bg-orange-900/40'
                   }`}
                 >
                   {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -309,8 +327,8 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* Tokenomics */}
-      <motion.section 
+      {/* TOKENOMICS */}
+      <motion.section
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -324,7 +342,9 @@ export default function Home() {
           
           <div className="mt-8 bg-orange-950/30 border border-border rounded-lg p-8 max-w-2xl">
             <h3 className="text-2xl font-bold text-accent mb-4">Fair launch on Pump.fun, home of the Solana network.</h3>
-            <p className="text-amber-100 mb-6">95% fair launch, 5% dev buy and lock.</p>
+            <p className="text-amber-100 mb-6">
+              95% fair launch, 5% dev buy and lock.
+            </p>
             
             <div className="flex items-center gap-3 bg-black/50 p-4 rounded-lg">
               <code className="text-xs sm:text-sm font-mono text-muted-foreground break-all flex-1">
@@ -333,6 +353,7 @@ export default function Home() {
               <button 
                 onClick={copyToClipboard}
                 className="p-2 hover:bg-orange-900 rounded transition flex-shrink-0"
+                title="Copy contract address"
               >
                 {copied ? <Check size={18} className="text-orange-400" /> : <Copy size={18} />}
               </button>
@@ -341,8 +362,8 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* Footer */}
-      <motion.section 
+      {/* FOOTER */}
+      <motion.section
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
