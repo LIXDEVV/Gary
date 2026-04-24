@@ -237,17 +237,17 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-3 gap-8 text-center">
             <div className="space-y-2">
-              <p className="text-4xl md:text-5xl font-bold text-accent">{communities.length}</p>
+              <p className="text-4xl md:text-5xl font-bold text-accent">1</p>
               <p className="text-muted-foreground">Communities</p>
             </div>
             <div className="space-y-2">
-              <p className="text-4xl md:text-5xl font-bold text-accent">12.4K</p>
+              <p className="text-4xl md:text-5xl font-bold text-accent">4</p>
               <p className="text-muted-foreground">Members</p>
             </div>
             <div className="space-y-2">
-              <p className="text-4xl md:text-5xl font-bold text-accent">{postCount.toLocaleString()}</p>
+              <p className="text-4xl md:text-5xl font-bold text-accent">2</p>
               <p className="text-muted-foreground">Posts / Mentions</p>
-              <p className="text-xs text-orange-400">#{hashtag} • Últimos 7 días</p>
+              <p className="text-xs text-orange-400">#{hashtag} Last 7 days</p>
             </div>
           </div>
         </div>
