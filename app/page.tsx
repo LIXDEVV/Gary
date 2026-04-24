@@ -126,7 +126,7 @@ export default function Home() {
       description: 'Building the AI ​​future in Solana.',
       icon: '🤖',
       members: 3,
-      link: 'https://www.youtube.com/'
+      link: 'https://github.com/search?q=Garay+AI&type=code'
     },
     {
       name: 'Telegram Bot',
@@ -137,10 +137,10 @@ export default function Home() {
     },
     {
       name: 'Gary Strategies',
-      description: 'Advanced DeFi trading and yield farming',
+      description: 'Promotion strategy within the Garay system',
       icon: '💰',
       members: 3,
-      link: 'https://github.com/search?q=Garay+AI&type=code'
+      link: 'https://x.com/GarayCompanion/status/2047795771924205847?s=20'
     }
   ];
 
