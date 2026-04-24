@@ -254,7 +254,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-3 gap-8 text-center">
             <div className="space-y-2">
-              <p className="text-4xl md:text-5xl font-bold text-accent">{communities.length}</p>
+              <p className="text-4xl md:text-5xl font-bold text-accent">1</p>
               <p className="text-muted-foreground">Communities</p>
             </div>
             <div className="space-y-2">
@@ -330,7 +330,7 @@ export default function Home() {
             <p className="text-sm text-muted-foreground">© Garay 2026</p>
             <div className="flex gap-4 text-sm text-muted-foreground flex-wrap">
               <a href="#" className="hover:text-foreground transition">PRIVACY</a>
-              <a href="#" className="hover:text-foreground transition">TELEGRAM</a>
+              <a href="https://t.me/Garaytop_bot" className="hover:text-foreground transition">TELEGRAM</a>
               <a href="#" className="hover:text-foreground transition">X</a>
               <a href="#" className="hover:text-foreground transition">DISCORD</a>
             </div>
