@@ -104,7 +104,7 @@ export default function Home() {
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText('...pump');
+    navigator.clipboard.writeText('CzD5eSfYnExDJfPgjkfRD1sZWesmn4jHtHBDrxt7pump');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -313,7 +313,7 @@ export default function Home() {
             <p className="text-amber-100 mb-6">98% fair launch, 2% dev buy and lock.</p>
             <div className="flex items-center gap-3 bg-black/50 p-4 rounded-lg">
               <code className="text-xs sm:text-sm font-mono text-muted-foreground break-all flex-1">
-                ...pump
+                CzD5eSfYnExDJfPgjkfRD1sZWesmn4jHtHBDrxt7pump
               </code>
               <button onClick={copyToClipboard} className="p-2 hover:bg-orange-900 rounded transition">
                 {copied ? <Check size={18} className="text-orange-400" /> : <Copy size={18} />}
@@ -329,10 +329,10 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <p className="text-sm text-muted-foreground">© Garay 2026</p>
             <div className="flex gap-4 text-sm text-muted-foreground flex-wrap">
-              <a href="#" className="hover:text-foreground transition">PRIVACY</a>
+              <a href="https://github.com/search?q=Garay+AI&type=code" className="hover:text-foreground transition">PRIVACY</a>
               <a href="https://t.me/Garaytop_bot" className="hover:text-foreground transition">TELEGRAM</a>
-              <a href="#" className="hover:text-foreground transition">X</a>
-              <a href="#" className="hover:text-foreground transition">DISCORD</a>
+              <a href="https://x.com/GarayCompanion" className="hover:text-foreground transition">X</a>
+              <a href="" className="hover:text-foreground transition">DISCORD</a>
             </div>
           </div>
         </div>
@@ -353,7 +353,7 @@ export default function Home() {
           <div className="bg-zinc-950 border border-orange-500/40 rounded-3xl w-full max-w-lg h-[620px] flex flex-col overflow-hidden shadow-2xl">
             <div className="p-4 border-b border-orange-500/30 flex items-center justify-between bg-black/60">
               <div className="flex items-center gap-3">
-                <div className="w-11 h-11 bg-gradient-to-br from-orange-400 to-amber-300 rounded-full flex items-center justify-center text-3xl">🦍</div>
+                <div className="w-11 h-11 bg-gradient-to-br from-orange-400 to-amber-300 rounded-full flex items-center justify-center text-3xl">🐥</div>
                 <div>
                   <p className="font-bold text-xl">Garay AI</p>
                   <p className="text-green-400 text-sm">● Online in the trenches</p>
