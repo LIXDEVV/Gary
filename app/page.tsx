@@ -226,10 +226,10 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="bg-accent text-accent-foreground px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition text-center">
+              <a href="https://x.com/i/flow/login?redirect_after_login=https%3A%2F%2Fgary-wine.vercel.app%2F" target="_blank" rel="noopener noreferrer" className="bg-accent text-accent-foreground px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition text-center">
                 Sign in with X
               </a>
-              <a href="https://x.com/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-orange-300 transition font-semibold flex items-center justify-center">
+              <a href="https://x.com/GarayCompanion" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-orange-300 transition font-semibold flex items-center justify-center">
                 Share GARAY on X
               </a>
             </div>
