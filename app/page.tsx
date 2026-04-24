@@ -24,7 +24,7 @@ export default function Home() {
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
   const [isConnecting, setIsConnecting] = useState(false);
   const [twitterConnected, setTwitterConnected] = useState(false);
-  const [postCount, setPostCount] = useState(342);
+  const [postCount, setPostCount] = useState(3);
 
   // Chat States
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -258,7 +258,7 @@ export default function Home() {
               <p className="text-muted-foreground">Communities</p>
             </div>
             <div className="space-y-2">
-              <p className="text-4xl md:text-5xl font-bold text-accent">1K</p>
+              <p className="text-4xl md:text-5xl font-bold text-accent">2</p>
               <p className="text-muted-foreground">Members</p>
             </div>
             <div className="space-y-2">
