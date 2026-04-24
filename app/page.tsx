@@ -44,7 +44,7 @@ export default function Home() {
 
   const hashtag = "GARAY";
 
-  // Predefined Responses for Garay
+  // Predefined Responses
   const predefinedResponses = [
     "In the trenches we learned that patience is the ultimate alpha.",
     "That's a solid mindset. Keep building, anon.",
@@ -60,7 +60,6 @@ export default function Home() {
     "Keep that same energy, king.",
     "Wisdom from the trenches: focus on what matters.",
     "The future belongs to those who build it.",
-    "Locked in. What's the play?"
   ];
 
   const sendMessage = () => {
@@ -204,31 +203,48 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* HERO */}
-      <motion.section initial="hidden" animate="visible" variants={sectionVariants} className="relative z-10 min-h-screen flex flex-col items-center justify-center border-b border-border pt-20 pb-40">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center space-y-12">
-          <div className="space-y-6">
-            <h1 className="text-6xl md:text-7xl font-bold leading-tight">
-              <span className="bg-gradient-to-r from-amber-300 via-orange-400 to-orange-500 bg-clip-text text-transparent">The trenches,</span>
-            </h1>
-            <h2 className="text-5xl md:text-6xl font-bold text-amber-100">regrouped.</h2>
+      {/* HERO - PERSONAJE A LA DERECHA */}
+      <motion.section
+        initial="hidden"
+        animate="visible"
+        variants={sectionVariants}
+        className="relative z-10 min-h-screen flex items-center border-b border-border pt-20 pb-20"
+      >
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+          
+          {/* Left - Text */}
+          <div className="space-y-8">
+            <div className="space-y-6">
+              <h1 className="text-6xl md:text-7xl font-bold leading-tight">
+                <span className="bg-gradient-to-r from-amber-300 via-orange-400 to-orange-500 bg-clip-text text-transparent">The trenches,</span>
+              </h1>
+              <h2 className="text-5xl md:text-6xl font-bold text-amber-100">regrouped.</h2>
+            </div>
+
+            <p className="text-amber-100 text-xl leading-relaxed max-w-lg">
+              Home for crypto natives. Communities powered by Garay AI — share alpha, build your tribe, own your voice.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="bg-accent text-accent-foreground px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition text-center">
+                Sign in with X
+              </a>
+              <a href="https://x.com/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-orange-300 transition font-semibold flex items-center justify-center">
+                Share GARAY on X
+              </a>
+            </div>
           </div>
 
-          <p className="text-amber-100 text-xl leading-relaxed max-w-3xl mx-auto">
-            Home for crypto natives. Communities powered by Garay AI — share alpha, build your tribe, own your voice.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="bg-accent text-accent-foreground px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition">
-              Sign in with X
-            </a>
-            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-orange-300 transition font-semibold">
-              Share GARAY on X
-            </a>
-          </div>
-
-          <div className="relative h-96 md:h-[400px] flex items-center justify-center">
-            <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/personaje-EsOAYFJWvB55rIN5aw317kenuGGXqu.png" alt="Garay" width={350} height={350} className="w-full max-w-sm h-auto drop-shadow-2xl" priority />
+          {/* Right - Character */}
+          <div className="flex justify-center md:justify-end">
+            <Image
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/personaje-EsOAYFJWvB55rIN5aw317kenuGGXqu.png"
+              alt="Garay"
+              width={480}
+              height={480}
+              className="w-full max-w-md md:max-w-lg drop-shadow-2xl"
+              priority
+            />
           </div>
         </div>
       </motion.section>
@@ -261,13 +277,7 @@ export default function Home() {
             <h2 className="text-4xl font-bold text-accent mb-8">EXPLORE</h2>
             <div className="flex gap-4 mb-12">
               {['all', 'trending', 'new'].map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setActiveCategory(category)}
-                  className={`px-4 py-2 rounded-lg font-semibold transition text-sm ${
-                    activeCategory === category ? 'bg-accent text-accent-foreground' : 'bg-orange-950/30 text-amber-100 hover:bg-orange-900/40'
-                  }`}
-                >
+                <button key={category} onClick={() => setActiveCategory(category)} className={`px-4 py-2 rounded-lg font-semibold transition text-sm ${activeCategory === category ? 'bg-accent text-accent-foreground' : 'bg-orange-950/30 text-amber-100 hover:bg-orange-900/40'}`}>
                   {category.charAt(0).toUpperCase() + category.slice(1)}
                 </button>
               ))}
@@ -280,13 +290,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {communities.map((community, idx) => (
-              <a
-                key={idx}
-                href={community.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-border rounded-lg p-6 bg-orange-950/30 hover:bg-orange-900/40 transition shadow-sm block group"
-              >
+              <a key={idx} href={community.link} target="_blank" rel="noopener noreferrer" className="border border-border rounded-lg p-6 bg-orange-950/30 hover:bg-orange-900/40 transition shadow-sm block group">
                 <div className="flex items-start justify-between mb-4">
                   <div className="text-4xl">{community.icon}</div>
                   <span className="text-xs text-muted-foreground">{community.members.toLocaleString()} members</span>
@@ -299,6 +303,7 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* TOKENOMICS & FOOTER (mantengo cortos para no alargar) */}
       {/* TOKENOMICS */}
       <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="relative z-10 border-b border-border py-20 bg-black/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -383,11 +388,7 @@ export default function Home() {
                   className="flex-1 bg-zinc-900 border border-orange-500/30 focus:border-orange-500 rounded-2xl px-5 py-3 outline-none"
                   disabled={isLoading}
                 />
-                <button
-                  onClick={sendMessage}
-                  disabled={isLoading || !inputMessage.trim()}
-                  className="bg-orange-500 hover:bg-orange-600 disabled:opacity-50 px-7 rounded-2xl font-semibold transition"
-                >
+                <button onClick={sendMessage} disabled={isLoading || !inputMessage.trim()} className="bg-orange-500 hover:bg-orange-600 disabled:opacity-50 px-7 rounded-2xl font-semibold transition">
                   Send
                 </button>
               </div>
