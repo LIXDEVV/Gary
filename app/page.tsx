@@ -118,29 +118,29 @@ export default function Home() {
       name: 'Trading Signals',
       description: 'Alpha and trading strategies for crypto natives',
       icon: '📊',
-      members: 1247,
-      link: 'https://www.youtube.com/'
+      members: 3,
+      link: 'https://pump.fun/'
     },
     {
       name: 'AI Development',
-      description: 'Building the future of AI with Garay',
+      description: 'Building the AI ​​future in Solana.',
       icon: '🤖',
-      members: 892,
+      members: 3,
       link: 'https://www.youtube.com/'
     },
     {
-      name: 'Web3 Builders',
+      name: 'Telegram Bot',
       description: 'Connect with developers pushing Web3 forward',
-      icon: '🔗',
+      icon: '✈️',
       members: 3421,
-      link: 'https://www.youtube.com/'
+      link: 'https://t.me/Garaytop_bot'
     },
     {
-      name: 'DeFi Strategies',
+      name: 'Gary Strategies',
       description: 'Advanced DeFi trading and yield farming',
       icon: '💰',
-      members: 2156,
-      link: 'https://www.youtube.com/'
+      members: 3,
+      link: 'https://github.com/search?q=Garay+AI&type=code'
     }
   ];
 
@@ -258,7 +258,7 @@ export default function Home() {
               <p className="text-muted-foreground">Communities</p>
             </div>
             <div className="space-y-2">
-              <p className="text-4xl md:text-5xl font-bold text-accent">12.4K</p>
+              <p className="text-4xl md:text-5xl font-bold text-accent">1K</p>
               <p className="text-muted-foreground">Members</p>
             </div>
             <div className="space-y-2">
