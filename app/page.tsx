@@ -29,14 +29,13 @@ export default function Home() {
   // Chat States
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: "¡Ey! Soy Garay, el guardián de las trincheras de Solana. ¿Qué onda, hermano? 🔥" }
+    { role: 'assistant', content: "Hey! I'm Garay, guardian of the Solana trenches. What's good, brother? 🔥" }
   ]);
   const [inputMessage, setInputMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
-  // Auto scroll
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
@@ -45,10 +44,10 @@ export default function Home() {
 
   const hashtag = "GARAY";
 
-  // ====================== WALLET ======================
+  // Wallet
   const connectWallet = async () => {
     if (!window.phantom?.solana) {
-      alert("Phantom Wallet no está instalada.\n\n¿Quieres instalarla ahora?");
+      alert("Phantom Wallet is not installed.\n\nDo you want to install it?");
       window.open("https://phantom.app/", "_blank");
       return;
     }
@@ -57,7 +56,7 @@ export default function Home() {
       const resp = await window.phantom.solana.connect();
       setWalletAddress(resp.publicKey.toString());
     } catch (error) {
-      alert("Error al conectar la wallet");
+      alert("Error connecting wallet");
     } finally {
       setIsConnecting(false);
     }
@@ -65,18 +64,17 @@ export default function Home() {
 
   const disconnectWallet = () => setWalletAddress(null);
 
-  // ====================== SIGN IN X ======================
+  // Sign in with X
   const signInWithTwitter = () => {
     const redirectUrl = encodeURIComponent(window.location.href);
     window.open(`https://twitter.com/i/flow/login?redirect_after_login=${redirectUrl}`, "_blank");
 
     setTimeout(() => {
       setTwitterConnected(true);
-      alert("✅ Cuenta de X vinculada correctamente (simulado)");
+      alert("✅ X account connected successfully (simulated)");
     }, 1500);
   };
 
-  // ====================== COPY TOKEN ======================
   const copyToClipboard = () => {
     navigator.clipboard.writeText('6oqrBATpFy8ispnR7b2Fc2gUniJ6dj31Z3MXcVHepump');
     setCopied(true);
@@ -87,7 +85,7 @@ export default function Home() {
     ? `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}` 
     : '';
 
-  // ====================== CHAT CON IA REAL ======================
+  // Send message to AI
   const sendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
 
@@ -124,7 +122,7 @@ export default function Home() {
         }
       }
     } catch (error) {
-      setMessages(prev => [...prev, { role: 'assistant', content: "Error de conexión... Inténtalo de nuevo hermano." }]);
+      setMessages(prev => [...prev, { role: 'assistant', content: "Connection error... Try again, brother." }]);
     } finally {
       setIsLoading(false);
     }
@@ -169,7 +167,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black text-foreground overflow-hidden relative">
       
-      {/* Fondo Oscuro */}
+      {/* Background */}
       <div className="fixed inset-0 pointer-events-none">
         <Image
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fondo-tmsJd7kfCoNcXIbcuyGY6xgJjqInrI.png"
@@ -207,7 +205,7 @@ export default function Home() {
                 </button>
               ) : (
                 <button onClick={connectWallet} disabled={isConnecting} className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 px-6 py-2 rounded-lg font-semibold transition text-sm disabled:opacity-70">
-                  <Wallet size={18} /> {isConnecting ? "Conectando..." : "Connect Phantom"}
+                  <Wallet size={18} /> {isConnecting ? "Connecting..." : "Connect Phantom"}
                 </button>
               )}
 
@@ -264,7 +262,7 @@ export default function Home() {
             <div className="space-y-2">
               <p className="text-4xl md:text-5xl font-bold text-accent">{postCount.toLocaleString()}</p>
               <p className="text-muted-foreground">Posts / Mentions</p>
-              <p className="text-xs text-orange-400">#{hashtag} • Últimos 7 días</p>
+              <p className="text-xs text-orange-400">#{hashtag} • Last 7 days</p>
             </div>
           </div>
         </div>
@@ -284,7 +282,7 @@ export default function Home() {
             </div>
             <div className="space-y-3">
               <h3 className="text-2xl font-bold text-foreground">Communities</h3>
-              <p className="text-amber-100 max-w-3xl">Built for crypto natives. Communities that cut through the noise.</p>
+              <p className="text-amber-100 max-w-3xl">Built for crypto natives. Communities that cut through the noise. No scammers. No hype. Just real builders.</p>
             </div>
           </div>
 
@@ -337,16 +335,16 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* BOTÓN FLOTANTE CHAT */}
+      {/* FLOATING CHAT BUTTON */}
       <button
         onClick={() => setIsChatOpen(true)}
         className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-orange-500 to-amber-500 text-black p-4 rounded-full shadow-2xl hover:scale-110 transition-all flex items-center gap-3 font-bold"
       >
         <MessageCircle size={28} />
-        Hablar con Garay
+        Talk to Garay
       </button>
 
-      {/* CHAT CON IA */}
+      {/* AI CHAT WINDOW */}
       {isChatOpen && (
         <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-black/90 backdrop-blur-md p-4">
           <div className="bg-zinc-950 border border-orange-500/40 rounded-3xl w-full max-w-lg h-[620px] flex flex-col overflow-hidden shadow-2xl">
@@ -355,7 +353,7 @@ export default function Home() {
                 <div className="w-11 h-11 bg-gradient-to-br from-orange-400 to-amber-300 rounded-full flex items-center justify-center text-3xl">🦍</div>
                 <div>
                   <p className="font-bold text-xl">Garay AI</p>
-                  <p className="text-green-400 text-sm">● En línea</p>
+                  <p className="text-green-400 text-sm">● Online in the trenches</p>
                 </div>
               </div>
               <button onClick={() => setIsChatOpen(false)} className="p-2 hover:bg-zinc-800 rounded-xl">
@@ -373,7 +371,7 @@ export default function Home() {
                   </div>
                 </div>
               ))}
-              {isLoading && <div className="text-orange-400">Garay está pensando...</div>}
+              {isLoading && <div className="text-orange-400">Garay is thinking...</div>}
             </div>
 
             <div className="p-4 border-t border-orange-500/30 bg-black/60">
@@ -383,12 +381,12 @@ export default function Home() {
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-                  placeholder="Escribe tu mensaje..."
+                  placeholder="Type your message..."
                   className="flex-1 bg-zinc-900 border border-orange-500/30 focus:border-orange-500 rounded-2xl px-5 py-3 outline-none"
                   disabled={isLoading}
                 />
                 <button onClick={sendMessage} disabled={isLoading || !inputMessage.trim()} className="bg-orange-500 hover:bg-orange-600 disabled:opacity-50 px-7 rounded-2xl font-semibold transition">
-                  Enviar
+                  Send
                 </button>
               </div>
             </div>
