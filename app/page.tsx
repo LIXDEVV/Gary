@@ -104,7 +104,7 @@ export default function Home() {
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText('...pump');
+    navigator.clipboard.writeText('526VsZGqtoS7du6Qo4pHq25MFSRbGDX3cPVFPEfVpump');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -313,7 +313,7 @@ export default function Home() {
             <p className="text-amber-100 mb-6">98% fair launch, 2% dev buy and lock.</p>
             <div className="flex items-center gap-3 bg-black/50 p-4 rounded-lg">
               <code className="text-xs sm:text-sm font-mono text-muted-foreground break-all flex-1">
-                ...pump
+                526VsZGqtoS7du6Qo4pHq25MFSRbGDX3cPVFPEfVpump
               </code>
               <button onClick={copyToClipboard} className="p-2 hover:bg-orange-900 rounded transition">
                 {copied ? <Check size={18} className="text-orange-400" /> : <Copy size={18} />}
